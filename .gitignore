@@ -2,3 +2,6 @@
 target/
 dbt_packages/
 logs/
+adventure-works-414221-166b3a98a4f5.json
+venv/
+package-lock.yml
