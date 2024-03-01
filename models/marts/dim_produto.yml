@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: "dim_produto" 
+    description: "Tabela dimensão de produtos."
+    columns:
+      - name: "sk_id_produto"
+        description: "Chave surrogate de produto."
+        tests:
+          - unique
+          - not_null
+
+      - name: "id_produto"
+        description: "Identificador único de produto."
+        tests:
+          - unique
+          - not_null
+      
+      - name: "nome_produto"
+        description: "Descrição do nome do produto."
+        tests:
+          - not_null
+
+      - name: "custo_padrao_produto"
+        description: "Custo padrão do produto"
+
+      - name: "preco_venda"
+        description: "Preco de venda do produto."
+        

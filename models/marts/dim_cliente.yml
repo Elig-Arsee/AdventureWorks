@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_cliente
+    description: 'Tabela de dimensão com os dados dos clientes da Adventure Works.'
+    columns:
+      - name: ''
+        description: "Chave primária. Composta por: id_ponto_venda."
+        tests:
+          - unique
+          - not_null

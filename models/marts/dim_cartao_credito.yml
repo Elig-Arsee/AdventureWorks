@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: "dim_cartao_credito"
+    description: "Tabela dimensão com informações de cartão de crédito"
+    columns:
+      - name: "sk_id_cartao_credito"
+        description: "A chave surrogate de cartão de crédito."
+        tests:
+          - unique
+          - not_null
+
+      - name: "id_cartao_credito"
+        description: "Identificador único do cartão de crédito."
+        tests:
+          - unique
+          - not_null
+      
+      - name: "tipo_cartao_credito"
+        description: "Bandeira do cartão de crédito."
+        tests:
+          - not_null
+
+      - name: "numero_cartao_credito"
+        description: "Número do cartão de crédito."
+        tests:
+          - not_null
+
+      - name: "mes_vencimento_cartao_credito"
+        description: "Mês de validade do cartão de crédito."
+        tests:
+          - not_null
+
+      - name: "ano_validade_cartao_credito"
+        description: 	"Ano de validade do cartão de crédito."
+        tests:
+          - not_null
+          

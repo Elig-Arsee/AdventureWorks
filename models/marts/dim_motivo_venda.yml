@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: "dim_motivo_venda" 
+    description: "Tabela dimensão do motivo da venda."
+    columns:
+      - name: "sk_id_pedido"
+        description: "A chave surrogate do pedido."
+        tests:
+          - not_null
+
+      - name: "id_pedido"
+        description: "Identificador único do pedido."
+        tests:
+          - not_null
+      
+      - name: "motivo_venda"
+        description: "Descrição do motivo da venda."
+        tests:
+          - not_null
+
+      - name: "tipo_motivo_venda"
+        description: "Tipo do motivo da venda."
+        tests:
+          - not_null
