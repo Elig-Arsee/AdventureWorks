@@ -1,0 +1,303 @@
+version: 2
+
+sources:
+  - name: sales
+    description: Dados brutos extraídos do banco de dados PostgreSQL da Adventure Works.
+    schema: sap_adw
+    tables:
+      - name: "salesperson"
+        description: "Tabela contendo informações atuais do representante de vendas."
+        columns:
+          - name: "businessentityid"
+            description: "Chave primária para registros SalesPerson. Chave estrangeira para Employee.BusinessEntityID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "territoryid"
+            description: "Território atualmente atribuído. Chave estrangeira para SalesTerritory.SalesTerritoryID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "salesquota"
+            description: "Vendas anuais projetadas."
+
+          - name: "bonus"
+            description: "Bônus devido se a cota for atingida."
+
+          - name: "commissionpct"
+            description: "Porcentagem de comissão recebida por venda."
+
+          - name: "salesytd"
+            description: "Total de vendas no ano até o momento."
+
+          - name: "saleslastyear"
+            description: "Total de vendas do ano anterior."
+
+      - name: "salesterritory"
+        description: "Tabela de consulta de território de vendas."
+        columns:
+          - name: "territoryid"
+            description: "Chave primária para registros SalesTerritory."
+            tests:
+              - unique
+              - not_null
+
+          - name: "name"
+            description: "Descrição do território de vendas."
+
+          - name: "countryregioncode"
+            description: "Código padrão de país ou região ISO. Chave estrangeira para CountryRegion.CountryRegionCode."
+
+          - name: "group"
+            description: "Área geográfica à qual pertence o território de vendas."
+
+          - name: "salesytd"
+            description: "Vendas no território no acumulado do ano."
+
+          - name: "saleslastyear"
+            description: "Vendas no território no ano anterior."
+
+          - name: "costytd"
+            description: "Custos comerciais no território no acumulado do ano."
+
+          - name: "costlastyear"
+            description: "Custos comerciais no território no ano anterior."
+
+      - name: "salesreason"
+        description: "Tabela de consulta dos motivos de compra do cliente."
+        columns:
+          - name: "salesreasonid"
+            description: "Chave primária para registros SalesReason."
+            tests:
+              - unique
+              - not_null
+
+          - name: "name"
+            description: "Descrição do motivo da venda."
+
+          - name: "reasontype"
+            description: "Categoria à qual pertence o motivo da venda."
+
+      - name: "store"
+        description: "Tabela contendo informações de clientes (revendedores) de produtos Adventure Works."
+        columns:
+          - name: "businessentityid"
+            description: "Chave primária. Chave estrangeira para Customer.BusinessEntityID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "name"
+            description: "Nome da loja."
+
+          - name: "salespersonid"
+            description: "ID do vendedor atribuído ao cliente. Chave estrangeira para SalesPerson.BusinessEntityID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "demographics"
+            description: "Informações demográficas sobre a loja, como número de funcionários, vendas anuais e tipo de loja."
+
+      - name: "salesorderdetail"
+        description: "Produtos individuais associados a um pedido de venda específico. Consulte SalesOrderHeader."
+        columns:
+          - name: "salesorderid"
+            description: "Chave primária. Chave estrangeira para SalesOrderHeader.SalesOrderID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "salesorderdetailid"
+            description: "Chave primária. Um número incremental exclusivo por produto vendido."
+            tests:
+              - unique
+              - not_null
+
+          - name: "carriertrackingnumber"
+            description: "Número de rastreamento da remessa fornecido pelo remetente."
+
+          - name: "orderqty"
+            description: "Quantidade encomendada por produto."
+
+          - name: "productid"
+            description: "Produto vendido ao cliente. Chave estrangeira para Product.ProductID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "specialofferid"
+            description: "Código promocional. Chave estrangeira para SpecialOffer.SpecialOfferID."
+
+          - name: "unitprice"
+            description: "Preço de venda de um único produto."
+
+          - name: "unitpricediscount"
+            description: "Valor do desconto."
+
+      - name: "customer"
+        description: "Tabela contendo informações atuais do cliente. Consulte também as tabelas Person e Store."
+        columns:
+          - name: "customerid"
+            description: "Chave primária."
+            tests:
+              - unique
+              - not_null
+
+          - name: "personid"
+            description: "Chave estrangeira para Person.BusinessEntityID"
+            tests:
+              - unique
+              - not_null
+
+          - name: "storeid"
+            description: "Chave estrangeira para Store.BusinessEntityID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "territoryid"
+            description: "ID do território em que o cliente está localizado. Chave estrangeira para SalesTerritory.SalesTerritoryID."
+            tests:
+              - unique
+              - not_null
+
+      - name: "creditcard"
+        description: "Tabela contendo informações do cartão de crédito do cliente."
+        columns:
+          - name: "creditcardid"
+            description: "Chave primária para registros CreditCard."
+            tests:
+              - unique
+              - not_null
+
+          - name: "cardtype"
+            description: "Nome do cartão de crédito."
+
+          - name: "cardnumber"
+            description: "Número do cartão de crédito."
+
+          - name: "expmonth"
+            description: "Mês de vencimento do cartão de crédito."
+
+          - name: "expyear"
+            description: "Ano de validade do cartão de crédito."
+
+      - name: "personcreditcard"
+        description: "Tabela de referência cruzada que mapeia pessoas para suas informações de cartão de crédito na tabela CreditCard."
+        columns:
+          - name: "businessentityid"
+            description: "Número de identificação da entidade empresarial. Chave estrangeira para Person.BusinessEntityID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "creditcardid"
+            description: "Número de identificação do cartão de crédito. Chave estrangeira para CreditCard.CreditCardID."
+            tests:
+              - unique
+              - not_null
+
+      - name: "salesorderheader"
+        description: "Tabela contendo informações gerais sobre pedidos de vendas. Valor do desconto."
+        columns:
+          - name: "revisionnumber"
+            description: "Número incremental para rastrear alterações no pedido de venda ao longo do tempo."
+
+          - name: "orderdate"
+            description: "Datas em que o pedido de venda foi criado."
+
+          - name: "duedate"
+            description: "Data em que o pedido é devido ao cliente."
+
+          - name: "shipdate"
+            description: "Data em que o pedido foi enviado ao cliente."
+
+          - name: "status"
+            description: "Status atual do pedido. 1 = Em processo; 2 = Aprovado; 3 = Pedido em espera; 4 = Rejeitado; 5 = Enviado; 6 = Cancelado"
+
+          - name: "onlineorderflag"
+            description: "Tipo de pedido: 0 = Pedido feito pelo vendedor. 1 = Pedido feito online pelo cliente."
+
+          - name: "purchaseordernumber"
+            description: "Referência do número do pedido de compra do cliente."
+
+          - name: "accountnumber"
+            description: "Referência do número da contabilidade financeira."
+
+          - name: "customerid"
+            description: "Número de identificação do cliente. Chave estrangeira para Customer.BusinessEntityID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "salespersonid"
+            description: "Vendedor que criou o pedido de venda. Chave estrangeira para SalesPerson.BusinessEntityID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "territoryid"
+            description: "Território em que a venda foi realizada. Chave estrangeira para SalesTerritory.SalesTerritoryID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "billtoaddressid"
+            description: "Endereço de cobrança do cliente. Chave estrangeira para Address.AddressID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "shiptoaddressid"
+            description: "Endereço de entrega do cliente. Chave estrangeira para Address.AddressID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "shipmethodid"
+            description: "Método de envio. Chave estrangeira para ShipMethod.ShipMethodID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "creditcardid"
+            description: "Número de identificação do cartão de crédito. Chave estrangeira para CreditCard.CreditCardID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "creditcardapprovalcode"
+            description: "Código de aprovação fornecido pela administradora do cartão de crédito."
+
+          - name: "subtotal"
+            description: "Subtotal de vendas. Calculado como SUM(SalesOrderDetail.LineTotal)para o SalesOrderID apropriado."
+
+          - name: "taxamt"
+            description: "Valor do imposto."
+
+          - name: "freight"
+            description: "Valor do frete."
+
+          - name: "totaldue"
+            description: "Total devido pelo cliente. Calculado como Subtotal + TaxAmt + Frete."
+
+          - name: "comment"
+            description: "Comentários do representante de vendas."
+
+      - name: "salesorderheadersalesreason"
+        description: "Tabela de referência cruzada que mapeia pedidos de vendas para códigos de motivo de vendas."
+        columns:
+          - name: "salesorderid"
+            description: "Chave primária. Chave estrangeira para SalesOrderHeader.SalesOrderID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "salesreasonid"
+            description: "Chave primária. Chave estrangeira para SalesReason.SalesReasonID."
+            tests:
+              - unique
+              - not_null

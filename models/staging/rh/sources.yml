@@ -1,0 +1,69 @@
+version: 2
+
+sources:
+  - name: humanresources
+    schema: sap_adw
+    description: Dados brutos extraídos do banco de dados PostgreSQL da Adventure Works.
+    tables:
+      - name: "department"
+        description: "Tabela de consulta contendo os departamentos da empresa Adventure Works Cycles."
+        columns:
+          - name: "departmentid"
+            description: "Chave primária para registros do Departamento."
+            tests:
+              - unique
+              - not_null
+
+          - name: "name"
+            description: "Nome do Departamento."
+
+          - name: "groupname"
+            description: "Nome do grupo ao qual o departamento pertence."
+
+      - name: "employee"
+        description: "Tabela contendo informações dos funcionários, como salário, departamento e cargo."
+        columns:
+          - name: "businessentityid"
+            description: "Chave primária para registros de funcionários. Chave estrangeira para BusinessEntity.BusinessEntityID."
+            tests:
+              - unique
+              - not_null
+
+          - name: "nationalidnumber"
+            description: "Número de identificação nacional exclusivo, como um número de segurança social."
+
+          - name: "loginid"
+            description: "Login na rede."
+            tests:
+              - unique
+              - not_null
+
+          - name: "jobtitle"
+            description: "Cargo do trabalho, como Comprador ou Representante de Vendas."
+
+          - name: "birthdate"
+            description: "Data de nascimento."
+
+          - name: "maritalstatus"
+            description: "Estado Civil."
+
+          - name: "gender"
+            description: "Gênero."
+
+          - name: "hiredate"
+            description: "Data de contratação do funcionário."
+
+          - name: "salariedflag"
+            description: "Regime de contratação: 0 = Por hora, não isento de negociação coletiva. 1 = Assalariado, isento de negociação coletiva."
+
+          - name: "vacationhours"
+            description: "Número de horas de férias disponíveis."
+
+          - name: "currentflag"
+            description: "Status do funcionário: 0 = Inativo, 1 = Ativo"
+
+          - name: "sickleavehours"
+            description: "Número de horas de licença médica disponíveis."
+            
+          - name: "organizationnode"
+            description: "Localização do funcionário na hierarquia corporativa."
