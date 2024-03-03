@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: 'dim_endereco'
+    description: 'Tabela de dimensão que armazena informações sobre endereços'
+    columns:
+      - name: 'sk_id_endereco_entrega_cliente'
+        description: 'Chave substituta do endereço de entrega do cliente'
+        tests:
+          - unique
+          - not_null
+      - name: 'sk_id_territorio'
+        description: 'Chave substituta do território'
+        tests:
+          - not_null
+      - name: 'sk_codigo_iso_estado_provincia'
+        description: 'Chave substituta do código ISO do estado ou província'
+      - name: 'sk_codigo_iso_pais_regiao'
+        description: 'Chave substituta do código ISO do país ou região'
+      - name: 'id_endereco_entrega_cliente'
+        description: 'ID do endereço de entrega do cliente'
+      - name: 'id_territorio'
+        description: 'ID do território'
+      - name: 'codigo_iso_pais_regiao'
+        description: 'Código ISO do país ou região'
+      - name: 'nome_pais_regiao'
+        description: 'Nome do país ou região'
+      - name: 'codigo_iso_estado_provincia'
+        description: 'Código ISO do estado ou província'
+      - name: 'nome_estado_provincia'
+        description: 'Nome do estado ou província'
+      - name: 'nome_territorio'
+        description: 'Nome do território'
+      - name: 'codigo_postal_endereco'
+        description: 'Código postal do endereço'
+      - name: 'cidade_endereco'
+        description: 'Cidade do endereço'

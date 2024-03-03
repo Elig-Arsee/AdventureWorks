@@ -1,0 +1,100 @@
+version: 2
+
+models:
+  - name: 'fact_vendas_pedido'
+    description: 'Modelo para agregar dados de vendas.'
+    columns:
+      - name: 'sk_id_pedido'
+        description: Identificador único para o pedido.
+
+      - name: 'sk_id_cliente'
+        description: 'Identificador único para o cliente.'
+
+      - name: 'sk_id_vendedor'
+        description: 'Identificador único para o vendedor.'
+
+      - name: 'sk_id_territorio'
+        description: 'Identificador único para o território.'
+
+      - name: 'sk_id_endereco_cobranca_cliente'
+        description: 'Identificador único para o endereço de cobrança do cliente.'
+
+      - name: 'sk_id_endereco_entrega_cliente'
+        description: 'Identificador único para o endereço de entrega do cliente.'
+
+      - name: 'sk_id_metodo_envio'
+        description: 'Identificador único para o método de envio.'
+
+      - name: 'sk_id_cartao_credito'
+        description: 'Identificador único para o cartão de crédito.'
+
+      - name: 'id_pedido'
+        description: 'Identificador do pedido.'
+
+      - name: 'data_pedido_venda'
+        description: 'Data do pedido de venda.'
+
+      - name: 'data_pedido_devido_cliente'
+        description: 'Data devida do pedido pelo cliente.'
+
+      - name: 'data_envio_pedido'
+        description: 'Data de envio do pedido.'
+
+      - name: 'status_pedido'
+        description: 'Status atual do pedido.'
+
+      - name: 'pedido_online'
+        description: 'Indica se o pedido foi feito online.'
+
+      - name: 'ref_numero_pedido_compra'
+        description: 'Número de referência do pedido de compra.'
+
+      - name: 'ref_numero_contabilidade_financeira'
+        description: 'Número de referência da contabilidade financeira.'
+
+      - name: 'id_cliente'
+        description: 'Identificador do cliente.'
+
+      - name: 'id_vendedor'
+        description: 'Identificador do vendedor.'
+
+      - name: 'id_territorio'
+        description: 'Identificador do território.'
+
+      - name: 'id_endereco_cobranca_cliente'
+        description: 'Identificador do endereço de cobrança do cliente.'
+
+      - name: 'id_endereco_entrega_cliente'
+        description: 'Identificador do endereço de entrega do cliente.'
+
+      - name: 'id_metodo_envio'
+        description: 'Identificador do método de envio.'
+
+      - name: 'id_cartao_credito'
+        description: 'Identificador do cartão de crédito.'
+
+      - name: 'codigo_aprovacao_cartao_credito'
+        description: 'Código de aprovação do cartão de crédito.'
+
+      - name: 'id_taxa_cambio'
+        description: 'Identificador da taxa de câmbio.'
+
+      - name: 'subtotal_vendas'
+        description: 'Subtotal das vendas.'
+
+      - name: 'valor_imposto'
+        description: 'Valor do imposto.'
+
+      - name: 'valor_frete'
+        description: 'Valor do frete.'
+
+      - name: 'total_devido_cliente'
+        description: 'Total devido pelo cliente.'
+
+    # Definindo as dependências
+    depends_on:
+      - model: dim_cartao_credito
+      - model: dim_cliente
+      - model: dim_endereco
+      - model: dim_motivo_venda
+      - model: dim_produto

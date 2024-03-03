@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: 'dim_motivo_venda'
+    description: 'Tabela de dimensão que armazena informações sobre motivos de venda'
+    columns:
+      - name: 'sk_id_pedido'
+        description: 'Chave substituta do pedido'
+        tests:
+          - unique
+          - not_null
+      - name: 'sk_id_motivo_venda'
+        description: 'Chave substituta do motivo de venda'
+        tests:
+          - not_null
+      - name: 'id_pedido'
+        description: 'ID do pedido'
+      - name: 'id_motivo_venda'
+        description: 'ID do motivo de venda'
+      - name: 'motivo_venda'
+        description: 'Motivo da venda'
+      - name: 'tipo_motivo_venda'
+        description: 'Tipo do motivo de venda'

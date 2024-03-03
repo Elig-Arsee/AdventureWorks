@@ -1,0 +1,80 @@
+version: 2
+
+models:
+  - name: 'fact_vendas_produto'
+    description: 'Tabela de fatos de vendas de produtos'
+    columns:
+      - name: 'id_produto'
+        description: 'ID do produto'
+        tests:
+          - unique
+          - not_null
+
+      - name: 'id_categoria_produto'
+        description: 'ID da categoria do produto'
+        tests:
+          - unique
+          - not_null
+
+      - name: 'id_subcategoria_produto'
+        description: 'ID da subcategoria do produto'
+        tests:
+          - unique
+          - not_null
+
+      - name: 'origem_produto'
+        description: 'Origem do produto'
+        tests:
+          - not_null
+
+      - name: 'nome_categoria_produto'
+        description: 'Nome da categoria do produto'
+        tests:
+          - not_null
+
+      - name: 'nome_subcategoria_produto'
+        description: 'Nome da subcategoria do produto'
+        tests:
+          - not_null
+
+      - name: 'nome_produto'
+        description: 'Nome do produto'
+        tests:
+          - not_null
+
+      - name: 'classe_produto'
+        description: 'Classe do produto'
+        tests:
+          - not_null
+
+      - name: 'custo_padrao_produto'
+        description: 'Custo padrão do produto'
+        tests:
+          - not_null
+
+      - name: 'preco_venda'
+        description: 'Preço de venda do produto'
+        tests:
+          - not_null
+
+      - name: 'id_cartao_credito'
+        description: 'ID do cartão de crédito'
+        tests:
+          - not_null
+
+      - name: 'id_cliente'
+        description: 'ID do cliente'
+        tests:
+          - not_null
+
+      - name: 'id_endereco_entrega_cliente'
+        description: 'ID do endereço de entrega do cliente'
+        tests:
+          - not_null
+   # Definindo as dependências
+    depends_on:
+      - model: dim_cartao_credito
+      - model: dim_cliente
+      - model: dim_endereco
+      - model: dim_motivo_venda
+      - model: dim_produto

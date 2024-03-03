@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: 'dim_produto'
+    description: 'Tabela de dimensão que armazena informações sobre produtos'
+    columns:
+      - name: 'sk_id_produto'
+        description: 'Chave substituta do produto'
+        tests:
+          - unique
+          - not_null
+      - name: 'sk_id_categoria_produto'
+        description: 'Chave substituta da categoria de produto'
+        tests:
+          - not_null
+      - name: 'sk_id_subcategoria_produto'
+        description: 'Chave substituta da subcategoria de produto'
+        tests:
+          - not_null
+      - name: 'id_produto'
+        description: 'ID do produto'
+        tests:
+          - unique
+          - not_null
+      - name: 'id_categoria_produto'
+        description: 'ID da categoria do produto'
+        tests:
+          - not_null
+      - name: 'id_subcategoria_produto'
+        description: 'ID da subcategoria do produto'
+        tests:
+          - not_null
+      - name: 'nome_categoria_produto'
+        description: 'Nome da categoria do produto'
+        tests:
+          - not_null
+      - name: 'nome_subcategoria_produto'
+        description: 'Nome da subcategoria do produto'
+        tests:
+          - not_null
+      - name: 'nome_produto'
+        description: 'Nome do produto'
+        tests:
+          - not_null
+      - name: 'classe_produto'
+        description: 'Classe do produto'
+      - name: 'origem_produto'
+        description: 'Origem do produto'
+      - name: 'custo_padrao_produto'
+        description: 'Custo padrão do produto'
+      - name: 'preco_venda'
+        description: 'Preço de venda do produto'
+      - name: 'data_produto_disponivel_venda'
+        description: 'Data de disponibilidade do produto para venda'
+      - name: 'data_produto_indisponivel'
+        description: 'Data de indisponibilidade do produto'

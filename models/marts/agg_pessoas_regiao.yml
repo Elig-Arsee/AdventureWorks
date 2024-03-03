@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: agg_pessoas_regiao
+    description: |
+      Modelo para agregação de informações de pessoas por região.
+    columns:
+      - name: sk_id_pedido
+        description: Chave primária da tabela de pedidos.
+      - name: id_pedido
+        description: Identificador único do pedido.
+      - name: id_pessoa
+        description: Identificador único da pessoa.
+      - name: id_login_funcionario
+        description: Identificador único do login do funcionário.
+      - name: cargo_funcionario
+        description: Cargo do funcionário.
+      - name: genero_funcionario
+        description: Gênero do funcionário.
+      - name: funcionario_atual
+        description: Indica se o funcionário está atualmente empregado.
+      - name: funcionario_assalariado
+        description: Indica se o funcionário é assalariado.
+      - name: horas_ferias_disponiveis
+        description: Horas de férias disponíveis para o funcionário.
+      - name: horas_licenca_medica_disponiveis
+        description: Horas de licença médica disponíveis para o funcionário.
+      - name: id_territorio
+        description: Identificador único do território.
+      - name: nome_territorio
+        description: Nome do território.
+      - name: vendas_territorio_acumulado_ano
+        description: Vendas acumuladas do território no ano.
+      - name: vendas_territorio_ano_anterior
+        description: Vendas do território no ano anterior.
+      - name: custos_comerciais_territorio_acumulado_ano
+        description: Custos comerciais acumulados do território no ano.
+      - name: custos_comerciais_territorio_ano_anterior
+        description: Custos comerciais do território no ano anterior.
+      - name: codigo_iso_pais_regiao
+        description: Código ISO do país/região.
+      - name: nome_pais_regiao
+        description: Nome do país/região.

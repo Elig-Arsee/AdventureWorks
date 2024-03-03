@@ -23,7 +23,6 @@ with pessoas as (
                 then 'Ordem de estilo oriental (sobrenome, nome)'
             else 'Valor desconhecido'
         end as estilo_nome_pessoa
-        , title as titulo_cortesia_pessoa
         , firstname as primeiro_nome_pessoa
         , middlename as nome_meio_pessoa
         , lastname as ultimo_nome_pessoa
@@ -34,8 +33,13 @@ with pessoas as (
             case when middlename is not null and lastname is not null then ' ' else '' end,
             coalesce(lastname, '')
         ) as nome_completo_pessoa
-        , suffix as sufixo_sobrenome_pessoa
-        , emailpromotion as email_promocao_pessoa
+        , case 
+            when emailpromotion = 0
+                then "sim"
+            when emailpromotion = 1
+                then "Não"
+            else "Não informado"
+        end as email_promocao_pessoa
     from {{ source('person', 'person') }}
 )
     , source_with_sk as (
@@ -44,11 +48,9 @@ with pessoas as (
             , id_entidade_empresarial
             , tipo_pessoa
             , estilo_nome_pessoa
-            , titulo_cortesia_pessoa
             , primeiro_nome_pessoa
             , ultimo_nome_pessoa
             , nome_completo_pessoa
-            , sufixo_sobrenome_pessoa
             , email_promocao_pessoa
         from pessoas
     )

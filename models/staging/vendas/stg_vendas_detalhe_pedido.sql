@@ -17,6 +17,7 @@ with detalhe_pedido as (
             , {{ dbt_utils.generate_surrogate_key(['id_produto']) }} as sk_id_produto
             , id_detalhe_pedido
             , id_pedido
+            , id_produto
             , numero_rastreamento_remessa
             , quantidade_encomendada_produto
             , codigo_promocional
