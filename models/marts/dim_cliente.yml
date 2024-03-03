@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: 'dim_cliente'
+    description: 'Tabela de dimensão que armazena informações sobre clientes'
+    columns:
+      - name: 'sk_id_cliente'
+        description: 'Chave substituta do cliente'
+        tests:
+          - unique
+          - not_null
+      - name: 'sk_id_pessoa'
+        description: 'Chave substituta da pessoa'
+        tests:
+          - not_null
+      - name: 'sk_id_loja'
+        description: 'Chave substituta da loja'
+        tests:
+          - not_null
+      - name: 'id_cliente'
+        description: 'ID do cliente'
+      - name: 'id_pessoa'
+        description: 'ID da pessoa'
+      - name: 'id_loja'
+        description: 'ID da loja'
+      - name: 'sk_id_entidade_empresarial'
+        description: 'Chave substituta da entidade empresarial'
+      - name: 'nome_completo_pessoa'
+        description: 'Nome completo da pessoa'
+      - name: 'tipo_pessoa'
+        description: 'Tipo de pessoa'
+      - name: 'email_promocao_pessoa'
+        description: 'E-mail para promoção'
+      - name: 'nome_loja'
+        description: 'Nome da loja'
+      - name: 'sk_id_vendedor'
+        description: 'Chave substituta do vendedor'

@@ -1,3 +1,5 @@
+{{ config(materialized='table')}}
+
 with cabecalho_pedido_vendas_motivo_vendas as (
     select
         salesorderid as id_pedido

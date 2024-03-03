@@ -55,6 +55,7 @@ with cabecalho_pedido_vendas as (
             , {{ dbt_utils.generate_surrogate_key(['id_metodo_envio']) }} as sk_id_metodo_envio
             , {{ dbt_utils.generate_surrogate_key(['id_cartao_credito']) }} as sk_id_cartao_credito
             , {{ dbt_utils.generate_surrogate_key(['id_taxa_cambio']) }} as sk_id_taxa_cambio
+            , id_pedido
             , data_pedido_venda
             , data_pedido_devido_cliente
             , data_envio_pedido
