@@ -1,11 +1,5 @@
 with 
-    stg_vendas_cabecalho_pedido as (
-        select distinct
-          , sk_id_cliente
-          id_cliente
-        from {{ ref('stg_vendas_cabecalho_pedido') }}
-    )
-    , stg_vendas_clientes as (
+    stg_vendas_clientes as (
         select
             sk_id_cliente
             , sk_id_pessoa
@@ -16,12 +10,11 @@ with
         from {{ ref('stg_vendas_clientes') }}
     )
     , stg_pessoas_pessoas as (
-        select 
-          sk_id_entidade_empresarial
+        select
+            sk_id_entidade_empresarial
             , id_entidade_empresarial
             , nome_completo_pessoa
             , tipo_pessoa
-            , person_type
             , email_promocao_pessoa
         from {{ ref('stg_pessoas_pessoas') }}
     )
@@ -30,28 +23,29 @@ with
             sk_id_entidade_empresarial
             , sk_id_vendedor
             , id_entidade_empresarial
-            , id_vendedor
-            , name_store
+            , nome_loja
         from {{ ref('stg_vendas_loja') }}
     )
-    , tabela_final as (--preciso ajustar essa tabela toda, mas daqui pra frente principalmente
+    , tabela_final as (
         select
-            stg_vendas_cabecalho_pedido.sk_id_cliente --daqui pra frente é só pra trás
+            stg_pessoas_pessoas.sk_id_entidade_empresarial
+            , stg_vendas_clientes.sk_id_pessoa
+            , stg_vendas_clientes.sk_id_loja
+            , stg_vendas_clientes.sk_id_cliente
             , stg_vendas_clientes.id_cliente
-            , stg_pessoas_pessoas.nome_completo_pessoa
+            , stg_vendas_loja.sk_id_vendedor
+            , stg_pessoas_pessoas.id_entidade_empresarial
+            , stg_vendas_clientes.id_pessoa
+            , stg_vendas_clientes.id_loja
+            , stg_pessoas_pessoas.nome_completo_pessoa            
+            , stg_vendas_loja.nome_loja
             , stg_pessoas_pessoas.tipo_pessoa
-            , stg_pessoas_pessoas.sk_id_pessoa
-            , stg_pessoas_pessoas.sk_id_loja
-            , stg_pessoas_pessoas.id_cliente
-            , stg_pessoas_pessoas.id_pessoa
-            , stg_pessoas_pessoas.id_loja
-        from stg_vendas_cabecalho_pedido 
-        left join stg_vendas_clientes 
-            on stg_vendas_cabecalho_pedido.id_cliente = stg_vendas_clientes.id_cliente
-         left join stg_pessoas_pessoas
-            on stg_vendas_clientes.id_cliente = stg_pessoas_pessoas.id_entidade_empresarial
+            , stg_pessoas_pessoas.email_promocao_pessoa
+        from stg_vendas_clientes 
+        left join stg_pessoas_pessoas
+            on stg_vendas_clientes.id_pessoa = stg_pessoas_pessoas.id_entidade_empresarial
         left join stg_vendas_loja
-            on stg_vendas_clientes.id_loja = stg_vendas_loja.id_entidade_empresarial    
+            on stg_vendas_clientes.id_loja = stg_vendas_loja.id_entidade_empresarial
     )
 select *
 from tabela_final

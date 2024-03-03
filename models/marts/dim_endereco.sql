@@ -1,6 +1,6 @@
 with 
     stg_vendas_cabecalho_pedido as (
-        select distinct
+        select
             sk_id_endereco_entrega_cliente
             , sk_id_territorio
             , id_endereco_entrega_cliente

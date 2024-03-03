@@ -10,7 +10,7 @@ with
         from {{ ref('stg_vendas_cartaocredito')}}
     )
     , stg_vendas_cabecalho_pedido as (
-        select distinct
+        select
             sk_id_cartao_credito
             , id_cartao_credito
         from {{ ref('stg_vendas_cabecalho_pedido') }}
