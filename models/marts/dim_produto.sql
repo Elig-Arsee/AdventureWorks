@@ -3,6 +3,7 @@ with
         select
             sk_id_produto
             , id_produto
+            , quantidade_encomendada_produto
         from {{ ref('stg_vendas_detalhe_pedido') }}
     )
     , stg_producao_produto as (
@@ -40,6 +41,7 @@ with
     , tabela_final as (
         select
             stg_vendas_detalhe_pedido.sk_id_produto
+            , stg_vendas_detalhe_pedido.quantidade_encomendada_produto
             , stg_producao_produto_categoria.sk_id_categoria_produto
             , stg_producao_produto.sk_id_subcategoria_produto
             , stg_vendas_detalhe_pedido.id_produto
