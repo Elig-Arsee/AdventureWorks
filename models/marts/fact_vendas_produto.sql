@@ -64,7 +64,8 @@ WITH
             nome_produto,
             classe_produto,
             custo_padrao_produto,
-            preco_venda
+            preco_venda,
+            quantidade_encomendada_produto
         FROM {{ ref('dim_produto') }}
     ),
     stg_vendas_cabecalho_pedido AS (
@@ -97,6 +98,7 @@ fact_vendas_produto AS (
         dim_produto.classe_produto,
         dim_produto.custo_padrao_produto,
         dim_produto.preco_venda,
+        dim_produto.quantidade_encomendada_produto,
         stg_vendas_cabecalho_pedido.sk_id_cartao_credito,
         stg_vendas_cabecalho_pedido.id_cartao_credito,
         stg_vendas_cabecalho_pedido.sk_id_cliente,
