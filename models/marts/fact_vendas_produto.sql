@@ -81,7 +81,8 @@ WITH
         vc.sk_id_territorio,
         vc.id_territorio,
         dp.sk_id_produto,
-        dp.id_produto
+        dp.id_produto,
+        vc.data_pedido_venda
     FROM {{ ref('stg_vendas_cabecalho_pedido') }} vc
     JOIN {{ ref('stg_vendas_detalhe_pedido') }} dp ON vc.id_pedido = dp.id_pedido
 ),
@@ -109,6 +110,7 @@ fact_vendas_produto AS (
         stg_vendas_cabecalho_pedido.id_pedido,
         stg_vendas_cabecalho_pedido.sk_id_territorio,
         stg_vendas_cabecalho_pedido.id_territorio,
+        stg_vendas_cabecalho_pedido.data_pedido_venda,
         dim_cliente.nome_completo_pessoa,
         dim_cliente.nome_loja,
         dim_cliente.tipo_pessoa,

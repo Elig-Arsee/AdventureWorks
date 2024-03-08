@@ -1,0 +1,1 @@
+- [@AVEJA O NOTEBOOK AQUI](https://colab.research.google.com/drive/1k7JTpZ_jOHvIrmLbX5_x0MAZ5WlCYCHp?authuser=1#scrollTo=_2dHMl0DguY3&uniqifier=5)
